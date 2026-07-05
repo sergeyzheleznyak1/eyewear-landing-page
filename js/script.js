@@ -29,7 +29,7 @@
       const wordElement = document.createElement('span');
       wordElement.className = wordClassName;
       wordElement.textContent = word;
-      wordElement.style.animationDelay = baseDelay + index * 0.08 + 's';
+      wordElement.style.animationDelay = baseDelay + index * 0.055 + 's';
       element.appendChild(wordElement);
 
       if (index < words.length - 1) {
@@ -158,7 +158,7 @@
     typingObserver.observe(element);
   }
 
-  initWordReveal(heroLead, 'hero__word', 2.55);
+  initWordReveal(heroLead, 'hero__word', 2.42);
   initMailTyping(mailTyped);
 
   if (craftVisual && craftDetails.length) {
