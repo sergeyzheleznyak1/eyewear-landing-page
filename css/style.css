@@ -446,22 +446,18 @@ a {
 
   z-index: 4;
   background-image: url("../img/reveal.png");
-  -webkit-mask-image: radial-gradient(
-    circle var(--mask-size) at var(--mask-x) var(--mask-y),
-    #ffffff 0 40%,
-    rgba(255, 255, 255, 0.75) 60%,
-    rgba(255, 255, 255, 0.4) 75%,
-    rgba(255, 255, 255, 0.12) 88%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    circle var(--mask-size) at var(--mask-x) var(--mask-y),
-    #ffffff 0 40%,
-    rgba(255, 255, 255, 0.75) 60%,
-    rgba(255, 255, 255, 0.4) 75%,
-    rgba(255, 255, 255, 0.12) 88%,
-    transparent 100%
-  );
+  -webkit-mask-image: radial-gradient(circle var(--mask-size) at var(--mask-x) var(--mask-y),
+      #ffffff 0 40%,
+      rgba(255, 255, 255, 0.75) 60%,
+      rgba(255, 255, 255, 0.4) 75%,
+      rgba(255, 255, 255, 0.12) 88%,
+      transparent 100%);
+  mask-image: radial-gradient(circle var(--mask-size) at var(--mask-x) var(--mask-y),
+      #ffffff 0 40%,
+      rgba(255, 255, 255, 0.75) 60%,
+      rgba(255, 255, 255, 0.4) 75%,
+      rgba(255, 255, 255, 0.12) 88%,
+      transparent 100%);
 }
 
 .hero__bottom {
@@ -1176,6 +1172,10 @@ a {
     transform: translateX(2px);
   }
 
+  .collection__inner {
+    gap: var(--space-4);
+  }
+
   .collection__content {
     gap: 26px;
   }
@@ -1278,6 +1278,7 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
