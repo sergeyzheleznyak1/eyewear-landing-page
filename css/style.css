@@ -142,7 +142,7 @@ a {
   padding-inline: var(--space-4);
 }
 
-.action-button:is(:hover, :focus-visible) {
+.action-button:focus-visible {
   color: var(--color-inverse);
   background-color: var(--color-ink);
   border-color: var(--color-ink);
@@ -150,6 +150,90 @@ a {
 
 .action-button:active {
   transform: scale(0.96);
+}
+
+@media (any-hover: hover) {
+  .action-button:hover {
+    color: var(--color-inverse);
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+
+  .menu__link:hover {
+    opacity: 0.72;
+  }
+
+  .menu__email:hover,
+  .menu__social-link:hover {
+    color: var(--color-inverse);
+  }
+
+  .hero__link:hover {
+    --link-line-scale: 0.78;
+    --link-arrow-shift: 8px;
+  }
+
+  .craft__detail:hover {
+    color: var(--color-inverse);
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+    transform: translateY(-2px);
+  }
+
+  .craft__detail:hover .craft__detail-text,
+  .craft__detail:hover .craft__detail-index {
+    color: color-mix(in srgb, var(--color-inverse) 72%, transparent);
+  }
+
+}
+
+@media (any-hover: hover) and (max-width: 767.98px) {
+  .hero__link:hover {
+    --link-line-scale: 1;
+    --link-arrow-shift: 4px;
+  }
+}
+
+@media (any-hover: none) {
+  .action-button:active {
+    color: var(--color-inverse);
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+
+  .menu__link:active {
+    opacity: 0.72;
+  }
+
+  .menu__email:active,
+  .menu__social-link:active {
+    color: var(--color-inverse);
+  }
+
+  .hero__link:active {
+    --link-line-scale: 0.78;
+    --link-arrow-shift: 8px;
+  }
+
+  .craft__detail:active {
+    color: var(--color-inverse);
+    background-color: var(--color-ink);
+    border-color: var(--color-ink);
+    transform: translateY(-2px);
+  }
+
+  .craft__detail:active .craft__detail-text,
+  .craft__detail:active .craft__detail-index {
+    color: color-mix(in srgb, var(--color-inverse) 72%, transparent);
+  }
+
+}
+
+@media (any-hover: none) and (max-width: 767.98px) {
+  .hero__link:active {
+    --link-line-scale: 1;
+    --link-arrow-shift: 4px;
+  }
 }
 
 .preloader {
@@ -361,16 +445,10 @@ a {
   text-underline-offset: 2px;
 }
 
-.menu__link:hover {
-  opacity: 0.72;
-}
-
-.menu__email:hover,
-.menu__social-link:hover {
-  color: var(--color-inverse);
-}
-
 .hero {
+  --hero-parallax-content: 0px;
+  --hero-parallax-image: 0px;
+
   position: relative;
   display: grid;
   grid-template-areas: "hero";
@@ -387,6 +465,8 @@ a {
   grid-template-areas: "hero-content";
   min-height: 100%;
   padding-block: var(--space-5);
+  transform: translate3d(0, var(--hero-parallax-content), 0);
+  will-change: transform;
 }
 
 .hero__title {
@@ -432,6 +512,7 @@ a {
   background-size: var(--hero-image-size) auto;
   opacity: 0;
   pointer-events: none;
+  will-change: opacity, transform;
   animation: hero-image-in 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s forwards;
 }
 
@@ -526,11 +607,6 @@ a {
 .hero__link span:last-child {
   transform: translateX(var(--link-arrow-shift));
   transition: transform 220ms var(--ease-out);
-}
-
-.hero__link:hover {
-  --link-line-scale: 0.78;
-  --link-arrow-shift: 8px;
 }
 
 .hero__link:active {
@@ -759,15 +835,15 @@ a {
     transform 220ms var(--ease-out);
 }
 
-.craft__detail:is(:hover, :focus-visible) {
+.craft__detail:focus-visible {
   color: var(--color-inverse);
   background-color: var(--color-ink);
   border-color: var(--color-ink);
   transform: translateY(-2px);
 }
 
-.craft__detail:is(:hover, :focus-visible) .craft__detail-text,
-.craft__detail:is(:hover, :focus-visible) .craft__detail-index {
+.craft__detail:focus-visible .craft__detail-text,
+.craft__detail:focus-visible .craft__detail-index {
   color: color-mix(in srgb, var(--color-inverse) 72%, transparent);
 }
 
@@ -905,16 +981,20 @@ a {
 }
 
 .page--motion .reveal-on-scroll {
+  --parallax-y: 0px;
+  --reveal-y: 12px;
+
   opacity: 0;
-  transform: translateY(12px);
+  transform: translate3d(0, calc(var(--reveal-y) + var(--parallax-y)), 0);
   transition:
     opacity 600ms var(--ease-emphatic),
     transform 600ms var(--ease-emphatic);
 }
 
 .page--motion .reveal-on-scroll.is-visible {
+  --reveal-y: 0px;
+
   opacity: 1;
-  transform: translateY(0);
 }
 
 .collection__feature.reveal-on-scroll:nth-child(2),
@@ -1057,7 +1137,7 @@ a {
     z-index: 6;
     grid-area: hero-title;
     align-self: start;
-    justify-self: start;
+    justify-content: center;
     display: flex;
     width: 100%;
     margin-inline-start: -0.05em;
@@ -1079,15 +1159,17 @@ a {
     align-self: start;
     display: block;
     padding-block-end: 0;
+    
   }
 
   .hero__intro {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2);
     max-width: none;
-    padding-block: 18px;
-    border-block: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+    padding: 18px;
+    border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
     background-color: color-mix(in srgb, var(--color-surface-soft) 84%, transparent);
+    border-radius: var(--radius-panel);
   }
 
   .hero__lead {
@@ -1095,14 +1177,12 @@ a {
     font-size: clamp(25px, 7.2vw, 34px);
     font-weight: 500;
     line-height: 1.02;
-    letter-spacing: -0.045em;
   }
 
   .hero__link {
     display: inline-grid;
     width: min(100%, 312px);
     min-height: 48px;
-    margin-block-start: 4px;
     padding: 0 16px;
     border: 1px solid var(--color-ink);
     border-radius: 8px;
@@ -1112,11 +1192,6 @@ a {
 
   .hero__link::after {
     display: none;
-  }
-
-  .hero__link:hover {
-    --link-line-scale: 1;
-    --link-arrow-shift: 4px;
   }
 
   .hero__mobile-tile {
@@ -1240,7 +1315,7 @@ a {
 
   .hero__intro {
     gap: 18px;
-    padding-block: 16px;
+    padding: 16px;
   }
 
   .hero__lead {
@@ -1303,12 +1378,12 @@ a {
 @keyframes hero-image-in {
   from {
     opacity: 0;
-    transform: scale(1.28) rotate(1.5deg);
+    transform: translate3d(0, var(--hero-parallax-image), 0) scale(1.28) rotate(1.5deg);
   }
 
   to {
     opacity: 1;
-    transform: scale(1) rotate(0deg);
+    transform: translate3d(0, var(--hero-parallax-image), 0) scale(1) rotate(0deg);
   }
 }
 
