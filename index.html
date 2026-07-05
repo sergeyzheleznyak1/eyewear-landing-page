@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative Studio Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="page">
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__row preloader__row--top">
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+    </div>
+    <div class="preloader__row preloader__row--bottom">
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+      <span class="preloader__panel"></span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header__inner content-grid">
+      <div class="header__brand">
+        <a class="header__logo-link" href="/" aria-label="Home">
+          <img class="header__logo" src="https://framerusercontent.com/images/VMcS7YYTM5PXfXvlHc9u3hSCMM.svg" alt=""/>
+        </a>
+
+        <p class="header__kicker">Optical edition 2026</p>
+      </div>
+
+      <button class="header__burger action-button action-button--icon" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+        <span class="header__burger-line"></span>
+        <span class="header__burger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="menu" id="site-menu" aria-label="Primary navigation" aria-hidden="true" inert>
+    <div class="menu__inner content-grid">
+      <ul class="menu__list">
+        <li><a class="menu__link" href="#collection">Collection</a></li>
+        <li><a class="menu__link" href="#craft">Craft</a></li>
+        <li><a class="menu__link" href="#reserve">Reserve</a></li>
+      </ul>
+
+      <address class="menu__contacts">
+        <a class="menu__email" href="mailto:concierge@sovaeyewear.com">concierge@sovaeyewear.com</a>
+        <ul class="menu__socials">
+          <li><a class="menu__social-link" href="#">Pinterest</a></li>
+          <li><a class="menu__social-link" href="#">Instagram</a></li>
+          <li><a class="menu__social-link" href="#">Lookbook</a></li>
+        </ul>
+      </address>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" aria-label="Hero">
+      <div class="hero__inner content-grid">
+        <h1 class="hero__title" id="hero-title" aria-label="SOVA">
+          <span class="hero__title-part hero__title-part--start" aria-hidden="true">SO</span>
+          <span class="hero__title-part hero__title-part--end" aria-hidden="true">VA</span>
+        </h1>
+
+        <div class="hero__bottom">
+          <div class="hero__intro">
+            <p class="hero__lead" id="hero-lead">Sculpted acetate frames with glare control for city light.</p>
+            <a class="hero__link" href="#collection">
+              <span>View collection</span>
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <a class="hero__mobile-tile" href="#collection">
+              <span class="hero__mobile-tile-kicker">24 hand finished frames</span>
+              <span class="hero__mobile-tile-title">Explore the optical edit</span>
+              <span class="hero__mobile-tile-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <div class="hero__meta" aria-label="Collection note">
+            <span class="hero__meta-number">24</span>
+            <span class="hero__meta-label">Hand finished frames</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__image hero__image--base" aria-hidden="true"></div>
+
+      <div class="hero__image hero__image--reveal" id="hero-reveal-image" aria-hidden="true"></div>
+    </section>
+
+    <section class="collection section" id="collection" aria-labelledby="collection-title">
+      <div class="collection__inner content-grid">
+        <div class="collection__media reveal-on-scroll">
+          <img class="collection__image" src="img/reveal.png" width="1672" height="941" alt="SOVA sunglasses with sculptural lenses"/>
+        </div>
+
+        <div class="collection__content reveal-on-scroll">
+          <h2 class="collection__title" id="collection-title">Frames that hold a room.</h2>
+          <p class="collection__text">A restrained collection in smoked black, clear graphite, and warm chrome. Each silhouette is built around precise weight, soft temples, and lenses that stay crisp in harsh daylight.</p>
+
+          <ul class="collection__features" aria-label="Collection highlights">
+            <li class="collection__feature reveal-on-scroll">
+              <span class="collection__feature-name">Acetate</span>
+              <span class="collection__feature-text">Polished by hand for a quiet satin edge.</span>
+            </li>
+            <li class="collection__feature reveal-on-scroll">
+              <span class="collection__feature-name">Lenses</span>
+              <span class="collection__feature-text">Filtered for glare without flattening color.</span>
+            </li>
+            <li class="collection__feature reveal-on-scroll">
+              <span class="collection__feature-name">Fit</span>
+              <span class="collection__feature-text">Balanced bridge and temple pressure.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="craft section" id="craft" aria-labelledby="craft-title">
+      <div class="craft__inner content-grid">
+        <div class="craft__intro reveal-on-scroll">
+          <h2 class="craft__title" id="craft-title">Built around the parts you feel first.</h2>
+          <p class="craft__text">This section is the fit story: weight, hinge pressure, and lens behavior are tuned together so the frame feels calm after hours outside.</p>
+        </div>
+
+        <div class="craft__layout">
+          <figure class="craft__visual reveal-on-scroll" data-craft-visual>
+            <img class="craft__image craft__image--base" src="img/base.png" width="1672" height="941" alt="Front view of SOVA frame fit"/>
+            <img class="craft__image craft__image--detail" src="img/craft-1.png" width="1672" height="941" alt="" aria-hidden="true" data-craft-image="balanced"/>
+            <img class="craft__image craft__image--detail" src="img/craft-2.png" width="1672" height="941" alt="" aria-hidden="true" data-craft-image="hinge"/>
+            <img class="craft__image craft__image--detail" src="img/craft-3.png" width="1672" height="941" alt="" aria-hidden="true" data-craft-image="lens"/>
+          </figure>
+
+          <div class="craft__details" aria-label="Frame construction details">
+            <article class="craft__detail reveal-on-scroll" tabindex="0" data-craft-detail="balanced">
+              <span class="craft__detail-index">01</span>
+              <h3 class="craft__detail-title">Balanced weight</h3>
+              <p class="craft__detail-text">Acetate thickness is kept where the frame needs structure, then softened near the bridge and temples.</p>
+            </article>
+
+            <article class="craft__detail reveal-on-scroll" tabindex="0" data-craft-detail="hinge">
+              <span class="craft__detail-index">02</span>
+              <h3 class="craft__detail-title">Hidden hinge line</h3>
+              <p class="craft__detail-text">The hinge sits inside the silhouette, reducing visual noise and easing pressure behind the ear.</p>
+            </article>
+
+            <article class="craft__detail reveal-on-scroll" tabindex="0" data-craft-detail="lens">
+              <span class="craft__detail-index">03</span>
+              <h3 class="craft__detail-title">Tuned lens curve</h3>
+              <p class="craft__detail-text">The tint cuts glare while keeping skin, shadow, and street color readable in hard daylight.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reserve section" id="reserve" aria-labelledby="reserve-title">
+      <div class="reserve__inner content-grid">
+        <div class="reserve__content reveal-on-scroll">
+          <h2 class="reserve__title" id="reserve-title">Write the concierge.</h2>
+          <p class="reserve__text">Send a fitting note and we will reply with available appointments, lens options, and frame recommendations.</p>
+          <a class="reserve__link action-button action-button--pill" href="mailto:concierge@sovaeyewear.com?subject=SOVA%20private%20fitting">Write email</a>
+        </div>
+
+        <div class="mail-card reveal-on-scroll" aria-label="Email preview">
+          <div class="mail-card__bar" aria-hidden="true">
+            <span class="mail-card__control"></span>
+            <span class="mail-card__control"></span>
+            <span class="mail-card__control"></span>
+          </div>
+          <dl class="mail-card__meta">
+            <div class="mail-card__row">
+              <dt>To</dt>
+              <dd>concierge@sovaeyewear.com</dd>
+            </div>
+            <div class="mail-card__row">
+              <dt>Subject</dt>
+              <dd>SOVA private fitting</dd>
+            </div>
+          </dl>
+          <p class="mail-card__body">
+            <span class="mail-card__typed">Hello SOVA, I would like to book a private fitting for the optical edition.</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
