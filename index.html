@@ -63,6 +63,8 @@
     </div>
   </nav>
 
+  <a class="floating-cta" href="#reserve" aria-label="Go to private fitting section">Book fitting</a>
+
   <main>
     <section class="hero" aria-label="Hero">
       <div class="hero__inner content-grid">
@@ -99,7 +101,7 @@
         </div>
 
         <div class="collection__content reveal-on-scroll">
-          <h2 class="collection__title" id="collection-title">Frames that hold a room.</h2>
+          <h2 class="collection__title" id="collection-title">Frames that hold a <span class="accent-word">room.</span></h2>
           <p class="collection__text">A restrained collection in smoked black, clear graphite, and warm chrome. Each silhouette is built around precise weight, soft temples, and lenses that stay crisp in harsh daylight.</p>
 
           <ul class="collection__features" aria-label="Collection highlights">
@@ -123,37 +125,37 @@
     <section class="craft section" id="craft" aria-labelledby="craft-title">
       <div class="craft__inner content-grid">
         <div class="craft__intro reveal-on-scroll">
-          <h2 class="craft__title" id="craft-title">Built around the parts you feel first.</h2>
-          <p class="craft__text">This section is the fit story: weight, hinge pressure, and lens behavior are tuned together so the frame feels calm after hours outside.</p>
+          <h2 class="craft__title" id="craft-title">Three ways to wear the same <span class="accent-word">shadow.</span></h2>
+          <p class="craft__text">Side profile, front gaze, and gesture show how the frame changes posture and light.</p>
         </div>
 
-        <div class="craft__layout">
-          <figure class="craft__visual reveal-on-scroll" data-craft-visual>
-            <img class="craft__image craft__image--base" src="img/base.png" width="1672" height="941" alt="Front view of SOVA frame fit"/>
-            <img class="craft__image craft__image--detail" src="img/craft-1.png" width="1672" height="941" alt="" aria-hidden="true" data-craft-image="balanced"/>
-            <img class="craft__image craft__image--detail" src="img/craft-2.png" width="1672" height="941" alt="" aria-hidden="true" data-craft-image="hinge"/>
-            <img class="craft__image craft__image--detail" src="img/craft-3.png" width="1672" height="941" alt="" aria-hidden="true" data-craft-image="lens"/>
-          </figure>
+        <div class="craft__cards" aria-label="Frame construction details">
+          <article class="craft-card craft-card--active reveal-on-scroll" tabindex="0" data-craft-card>
+            <img class="craft-card__image" src="img/craft-1.png" width="1672" height="941" alt="Side profile of SOVA sunglasses"/>
+            <div class="craft-card__caption">
+              <span class="craft-card__index">01</span>
+              <h3 class="craft-card__title">Profile / black acetate line</h3>
+              <p class="craft-card__text">Acetate stays substantial through the brow, then softens near the bridge and temples.</p>
+            </div>
+          </article>
 
-          <div class="craft__details" aria-label="Frame construction details">
-            <article class="craft__detail reveal-on-scroll" tabindex="0" data-craft-detail="balanced">
-              <span class="craft__detail-index">01</span>
-              <h3 class="craft__detail-title">Balanced weight</h3>
-              <p class="craft__detail-text">Acetate thickness is kept where the frame needs structure, then softened near the bridge and temples.</p>
-            </article>
+          <article class="craft-card reveal-on-scroll" tabindex="0" data-craft-card>
+            <img class="craft-card__image" src="img/craft-2.png" width="1672" height="941" alt="Front view of dark SOVA lens geometry"/>
+            <div class="craft-card__caption">
+              <span class="craft-card__index">02</span>
+              <h3 class="craft-card__title">Front / dark lens geometry</h3>
+              <p class="craft-card__text">The tint cuts glare while keeping skin, shadow, and street color readable.</p>
+            </div>
+          </article>
 
-            <article class="craft__detail reveal-on-scroll" tabindex="0" data-craft-detail="hinge">
-              <span class="craft__detail-index">02</span>
-              <h3 class="craft__detail-title">Hidden hinge line</h3>
-              <p class="craft__detail-text">The hinge sits inside the silhouette, reducing visual noise and easing pressure behind the ear.</p>
-            </article>
-
-            <article class="craft__detail reveal-on-scroll" tabindex="0" data-craft-detail="lens">
-              <span class="craft__detail-index">03</span>
-              <h3 class="craft__detail-title">Tuned lens curve</h3>
-              <p class="craft__detail-text">The tint cuts glare while keeping skin, shadow, and street color readable in hard daylight.</p>
-            </article>
-          </div>
+          <article class="craft-card reveal-on-scroll" tabindex="0" data-craft-card>
+            <img class="craft-card__image" src="img/craft-3.png" width="1672" height="941" alt="Gesture adjusting SOVA sunglasses"/>
+            <div class="craft-card__caption">
+              <span class="craft-card__index">03</span>
+              <h3 class="craft-card__title">Gesture / glare held back</h3>
+              <p class="craft-card__text">Hinge pressure and lens curve stay calm through long daylight wear.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
