@@ -104,6 +104,10 @@ html {
   --size-logo: var(--space-4);
   --size-burger-line: 24px;
   --size-menu-panel: 440px;
+  --menu-panel-offset-y: 0px;
+  --menu-panel-inset: var(--space-4);
+  --menu-close-offset-x: calc(var(--menu-panel-inset) * -0.75);
+  --menu-close-offset-y: calc(var(--menu-panel-inset) * 0.75);
   --size-hero-link: 270px;
   --size-hero-meta-line: 68px;
   --size-collection-label: 88px;
@@ -423,6 +427,7 @@ a {
   color: var(--color-inverse);
   background-color: var(--color-ink);
   border-color: var(--color-ink);
+  transform: translate3d(var(--menu-close-offset-x), var(--menu-close-offset-y), 0);
 }
 
 .header__burger:focus-visible {
@@ -477,12 +482,6 @@ a {
   z-index: 30;
 }
 
-.header:has(.header__burger--open) .header__logo-link,
-.header:has(.header__burger--open) .header__kicker {
-  opacity: 0;
-  pointer-events: none;
-}
-
 .menu__inner {
   display: flex;
   flex-direction: column;
@@ -490,7 +489,7 @@ a {
   gap: var(--space-5);
   width: min(var(--size-menu-panel), calc(100% - var(--page-gutter) * 2));
   min-height: var(--size-menu-panel);
-  margin-top: var(--header-offset);
+  margin-top: calc(var(--header-offset) + var(--menu-panel-offset-y));
   margin-right: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
   margin-left: auto;
   padding: var(--space-5);
