@@ -6,8 +6,11 @@
   const revealImage = document.getElementById('hero-reveal-image');
   const collectionMedia = document.querySelector('.collection__media');
   const mailTyped = document.querySelector('.mail-card__typed');
-  const craftVisual = document.querySelector('[data-craft-visual]');
-  const craftDetails = document.querySelectorAll('[data-craft-detail]');
+  const collectionSection = document.getElementById('collection');
+  const craftSection = document.getElementById('craft');
+  const reserveSection = document.getElementById('reserve');
+  const floatingCta = document.querySelector('.floating-cta');
+  const craftCards = document.querySelectorAll('[data-craft-card]');
   const animatedElements = document.querySelectorAll('.reveal-on-scroll');
   const canUseReveal = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -201,26 +204,63 @@
   initMailTyping(mailTyped);
   initScrollParallax(hero, collectionMedia);
 
-  if (craftVisual && craftDetails.length) {
-    craftDetails.forEach(function(detail) {
-      const detailName = detail.getAttribute('data-craft-detail');
+  function setActiveCraftCard(activeCard) {
+    craftCards.forEach(function(card) {
+      card.classList.toggle('craft-card--active', card === activeCard);
+    });
+  }
 
-      detail.addEventListener('mouseenter', function() {
-        craftVisual.setAttribute('data-active-detail', detailName);
+  if (craftCards.length) {
+    craftCards.forEach(function(card) {
+      card.addEventListener('mouseenter', function() {
+        setActiveCraftCard(card);
       });
 
-      detail.addEventListener('focus', function() {
-        craftVisual.setAttribute('data-active-detail', detailName);
-      });
-
-      detail.addEventListener('mouseleave', function() {
-        craftVisual.removeAttribute('data-active-detail');
-      });
-
-      detail.addEventListener('blur', function() {
-        craftVisual.removeAttribute('data-active-detail');
+      card.addEventListener('focus', function() {
+        setActiveCraftCard(card);
       });
     });
+  }
+
+  if (floatingCta && collectionSection && craftSection && reserveSection) {
+    const visibleSections = {
+      collection: false,
+      craft: false
+    };
+    let isReserveVisible = false;
+
+    function syncFloatingCta() {
+      const isMiddleVisible = visibleSections.collection || visibleSections.craft;
+      floatingCta.classList.toggle('floating-cta--visible', isMiddleVisible && !isReserveVisible);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      floatingCta.classList.add('floating-cta--visible');
+    } else {
+      const middleObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          visibleSections[entry.target.id] = entry.isIntersecting;
+          syncFloatingCta();
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '-8% 0px -18% 0px'
+      });
+
+      const reserveObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          isReserveVisible = entry.isIntersecting;
+          syncFloatingCta();
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px'
+      });
+
+      middleObserver.observe(collectionSection);
+      middleObserver.observe(craftSection);
+      reserveObserver.observe(reserveSection);
+    }
   }
 
   if (animatedElements.length) {
