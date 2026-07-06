@@ -208,17 +208,35 @@
 
   function setActiveCraftCard(activeCard) {
     craftCards.forEach(function(card) {
-      card.classList.toggle('craft-card--active', card === activeCard);
+      const isActive = card === activeCard;
+
+      card.classList.toggle('craft-card--active', isActive);
+      card.setAttribute('aria-pressed', String(isActive));
     });
   }
 
   if (craftCards.length) {
     craftCards.forEach(function(card) {
+      card.setAttribute('aria-pressed', String(card.classList.contains('craft-card--active')));
+
       card.addEventListener('mouseenter', function() {
         setActiveCraftCard(card);
       });
 
-      card.addEventListener('focus', function() {
+      card.addEventListener('focusin', function() {
+        setActiveCraftCard(card);
+      });
+
+      card.addEventListener('click', function() {
+        setActiveCraftCard(card);
+      });
+
+      card.addEventListener('keydown', function(event) {
+        if (event.key !== 'Enter' && event.key !== ' ') {
+          return;
+        }
+
+        event.preventDefault();
         setActiveCraftCard(card);
       });
     });
@@ -293,10 +311,10 @@
     }
   }
 
-  if (revealImage && canUseReveal && !reduceMotion) {
+  if (hero && revealImage && canUseReveal && !reduceMotion) {
     let animationFrame = 0;
 
-    window.addEventListener('pointermove', function(event) {
+    hero.addEventListener('pointermove', function(event) {
       if (animationFrame) {
         return;
       }
@@ -306,6 +324,6 @@
         revealImage.style.setProperty('--mask-y', event.clientY + 'px');
         animationFrame = 0;
       });
-    });
+    }, { passive: true });
   }
 })();

@@ -90,6 +90,9 @@ html {
   --letter-tight: -0.03em;
 
   --size-action: clamp(3rem, 4vw, 3.5rem);
+  --size-action-pill-min: 154px;
+  --size-menu-panel: 440px;
+  --size-meta-line: 68px;
 
   --motion-shift-sm: 0.625rem;
   --duration-fast: 180ms;
@@ -103,7 +106,6 @@ html {
 body {
   min-width: 320px;
   min-height: 100%;
-  overflow-x: hidden;
   color: var(--color-ink);
   background-color: var(--color-surface);
   font-family: var(--font-family-base);
@@ -157,7 +159,7 @@ a {
 }
 
 .action-button--pill {
-  min-width: 154px;
+  min-width: var(--size-action-pill-min);
   min-height: var(--size-action);
   padding-inline: var(--space-4);
 }
@@ -175,13 +177,13 @@ a {
 .accent-word {
   font-family: var(--font-family-accent);
   font-weight: 600;
-  letter-spacing: -0.055em;
+  letter-spacing: 0;
   line-height: 0.9;
 }
 
 .floating-cta {
   position: fixed;
-  right: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
+  right: max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   bottom: var(--space-3);
   z-index: 18;
   --button-color: var(--color-inverse);
@@ -210,17 +212,21 @@ a {
   pointer-events: none;
   transform: translate3d(0, calc(var(--space-3) * 0.7), 0);
   transition:
-    opacity var(--duration-panel) var(--ease-out),
-    transform var(--duration-panel) var(--ease-out),
+    opacity 360ms var(--ease-out),
+    transform 360ms var(--ease-out),
+    visibility 0s linear 360ms,
     background-color var(--duration-fast) ease,
     border-color var(--duration-fast) ease,
     color var(--duration-fast) ease;
+  visibility: hidden;
 }
 
 .floating-cta--visible {
   opacity: 1;
   pointer-events: auto;
   transform: translate3d(0, 0, 0);
+  transition-delay: 0s;
+  visibility: visible;
 }
 
 .floating-cta:focus-visible {
@@ -295,22 +301,6 @@ a {
       0 var(--space-4) calc(var(--space-7) * 0.72) color-mix(in srgb, var(--color-ink) 16%, transparent);
   }
 
-}
-
-.action-button:hover,
-.hero__link:hover,
-.reserve__link:hover,
-.floating-cta:hover {
-  color: var(--button-hover-color);
-  background-color: var(--button-hover-bg);
-  border-color: var(--button-hover-border);
-}
-
-.action-button:hover,
-.hero__link:hover,
-.reserve__link:hover,
-.floating-cta:hover {
-  transform: translate3d(0, calc(var(--space-1) * -0.25), 0);
 }
 
 @media (any-hover: hover) and (width <= 48rem) {
@@ -558,10 +548,10 @@ a {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--space-5);
-  width: min(440px, calc(100% - var(--page-gutter) * 2));
-  min-height: 440px;
+  width: min(var(--size-menu-panel), calc(100% - var(--page-gutter) * 2));
+  min-height: var(--size-menu-panel);
   margin-top: var(--header-offset);
-  margin-right: max(var(--page-gutter), calc((100vw - var(--content-max-width)) / 2));
+  margin-right: max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   margin-left: auto;
   padding: var(--space-5);
   border: var(--border-width) solid color-mix(in srgb, var(--color-inverse) 14%, transparent);
@@ -609,6 +599,7 @@ a {
 }
 
 .menu__social-link {
+  cursor: default;
   font-size: calc(var(--font-label-size) + 2px);
   text-decoration: underline;
   text-underline-offset: calc(var(--space-1) * 0.25);
@@ -770,8 +761,7 @@ a {
 }
 
 .hero__link,
-.reserve__link,
-.floating-cta {
+.reserve__link {
   --button-color: var(--color-inverse);
   --button-bg: var(--color-ink);
   --button-border: var(--color-ink);
@@ -815,7 +805,7 @@ a {
 
 .hero__meta {
   display: inline-grid;
-  grid-template-columns: auto minmax(13ch, auto) 68px;
+  grid-template-columns: auto minmax(13ch, auto) var(--size-meta-line);
   align-items: center;
   gap: var(--space-2);
   justify-self: end;
@@ -890,7 +880,7 @@ a {
   font-size: var(--font-title-size);
   font-weight: 500;
   line-height: 0.94;
-  letter-spacing: var(--letter-tight);
+  letter-spacing: 0;
 }
 
 .collection__title {
@@ -1257,9 +1247,6 @@ a {
     --hero-title-size: min(13.5vw, 14.5rem);
   }
 
-  /* .hero__image {
-    --hero-image-width: min(64vw, 81.25rem);
-  } */
 }
 
 @media (width <= 64rem) {
@@ -1491,7 +1478,7 @@ a {
     inset-block-start: 50%;
     inset-inline-start: 50%;
     width: max-content;
-    max-width: calc(100vw - 144px);
+    max-width: calc(100% - 144px);
     transform: translate(-50%, -50%);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1517,7 +1504,7 @@ a {
 
   .hero {
     min-height: max(45rem, 100svh);
-    --hero-image-width: clamp(34rem, 150vw, 46rem);
+    --hero-image-width: clamp(40rem, 170vw, 50rem);
     border-bottom: var(--border-width) solid color-mix(in srgb, var(--color-ink) 8%, transparent);
     background-color: var(--color-surface-soft);
     overflow: hidden;
@@ -1745,7 +1732,7 @@ a {
   }
 
   .hero {
-    --hero-image-width: clamp(33rem, 146vw, 40rem);
+    --hero-image-width: clamp(37rem, 165vw, 44rem);
   }
 
   .hero__image {
@@ -1826,12 +1813,12 @@ a {
 @keyframes hero-image-in {
   from {
     opacity: 0;
-    transform: translate3d(0, var(--hero-parallax-image), 0) scale(1.28) rotate(1.5deg);
+    transform: translate3d(0, var(--hero-parallax-image), 0);
   }
 
   to {
     opacity: 1;
-    transform: translate3d(0, var(--hero-parallax-image), 0) scale(1) rotate(0deg);
+    transform: translate3d(0, var(--hero-parallax-image), 0);
   }
 }
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SOVA Eyewear - Optical Edition 2026</title>
+  <link rel="icon" href="data:,"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600&display=swap" rel="stylesheet"/>
@@ -54,10 +55,10 @@
 
       <address class="menu__contacts">
         <a class="menu__email" href="mailto:concierge@sovaeyewear.com">concierge@sovaeyewear.com</a>
-        <ul class="menu__socials">
-          <li><a class="menu__social-link" href="#">Pinterest</a></li>
-          <li><a class="menu__social-link" href="#">Instagram</a></li>
-          <li><a class="menu__social-link" href="#">Lookbook</a></li>
+        <ul class="menu__socials" aria-label="Social channels">
+          <li><span class="menu__social-link">Pinterest</span></li>
+          <li><span class="menu__social-link">Instagram</span></li>
+          <li><span class="menu__social-link">Lookbook</span></li>
         </ul>
       </address>
     </div>
@@ -66,7 +67,7 @@
   <a class="floating-cta" href="#reserve" aria-label="Go to private fitting section">Book fitting</a>
 
   <main>
-    <section class="hero" aria-label="Hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero__inner content-grid">
         <h1 class="hero__title" id="hero-title" aria-label="SOVA">
           <span class="hero__title-part hero__title-part--start" aria-hidden="true">SO</span>
@@ -130,7 +131,7 @@
         </div>
 
         <div class="craft__cards" aria-label="Frame construction details">
-          <article class="craft-card craft-card--active reveal-on-scroll" tabindex="0" data-craft-card>
+          <article class="craft-card craft-card--active reveal-on-scroll" tabindex="0" role="button" aria-pressed="true" data-craft-card>
             <img class="craft-card__image" src="img/craft-1.png" width="1672" height="941" alt="Side profile of SOVA sunglasses"/>
             <div class="craft-card__caption">
               <span class="craft-card__index">01</span>
@@ -139,7 +140,7 @@
             </div>
           </article>
 
-          <article class="craft-card reveal-on-scroll" tabindex="0" data-craft-card>
+          <article class="craft-card reveal-on-scroll" tabindex="0" role="button" aria-pressed="false" data-craft-card>
             <img class="craft-card__image" src="img/craft-2.png" width="1672" height="941" alt="Front view of dark SOVA lens geometry"/>
             <div class="craft-card__caption">
               <span class="craft-card__index">02</span>
@@ -148,7 +149,7 @@
             </div>
           </article>
 
-          <article class="craft-card reveal-on-scroll" tabindex="0" data-craft-card>
+          <article class="craft-card reveal-on-scroll" tabindex="0" role="button" aria-pressed="false" data-craft-card>
             <img class="craft-card__image" src="img/craft-3.png" width="1672" height="941" alt="Gesture adjusting SOVA sunglasses"/>
             <div class="craft-card__caption">
               <span class="craft-card__index">03</span>
