@@ -73,6 +73,8 @@ html {
   --gap-block: clamp(1.5rem, 3vw, 2rem);
   --gap-stack: clamp(1rem, 2vw, 1.5rem);
   --gap-tight: var(--space-2);
+  --gap-hero-mobile: var(--space-6);
+  --menu-panel-padding: var(--space-5);
 
   --border-width: 0.0625rem;
   --focus-ring-width: 0.125rem;
@@ -85,9 +87,10 @@ html {
   --font-card-title-size: clamp(1.75rem, 2.5vw, 2.5rem);
 
   --line-height-solid: 1;
+  --line-height-title: 0.98;
   --line-height-body: 1.55;
-  --letter-label: 0.2em;
-  --letter-tight: -0.03em;
+  --letter-label: 0.1em;
+  --letter-display: -0.03em;
 
   --size-action: clamp(3rem, 4vw, 3.5rem);
   --size-action-pill-min: 154px;
@@ -204,7 +207,7 @@ a {
   background-color: var(--button-bg);
   font-size: var(--font-label-size);
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--letter-label);
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
@@ -553,7 +556,7 @@ a {
   margin-top: var(--header-offset);
   margin-right: max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   margin-left: auto;
-  padding: var(--space-5);
+  padding: var(--menu-panel-padding);
   border: var(--border-width) solid color-mix(in srgb, var(--color-inverse) 14%, transparent);
   border-radius: var(--radius-panel);
   background-color: var(--color-ink);
@@ -600,9 +603,8 @@ a {
 
 .menu__social-link {
   cursor: default;
+  color: color-mix(in srgb, var(--color-inverse) 48%, transparent);
   font-size: calc(var(--font-label-size) + 2px);
-  text-decoration: underline;
-  text-underline-offset: calc(var(--space-1) * 0.25);
 }
 
 .hero {
@@ -816,7 +818,7 @@ a {
 
 .hero__meta-number {
   font-size: calc(var(--font-card-title-size) + 2px);
-  letter-spacing: -0.06em;
+  letter-spacing: var(--letter-display);
   line-height: var(--line-height-solid);
 }
 
@@ -879,7 +881,7 @@ a {
 .reserve__title {
   font-size: var(--font-title-size);
   font-weight: 500;
-  line-height: 0.94;
+  line-height: var(--line-height-title);
   letter-spacing: 0;
 }
 
@@ -1028,7 +1030,7 @@ a {
   font-family: var(--font-family-base);
   font-size: clamp(10px, 0.78vw, 12px);
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: var(--letter-label);
   line-height: 1.22;
   text-transform: uppercase;
 }
@@ -1043,9 +1045,9 @@ a {
   max-width: 30ch;
   color: color-mix(in srgb, var(--color-ink) 74%, transparent);
   font-size: clamp(15px, 1vw, 17px);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.42;
   opacity: 1;
   transform: translateY(0);
   transition:
@@ -1076,6 +1078,12 @@ a {
 
 .reserve__text {
   max-width: 42em;
+}
+
+.reserve__action {
+  display: grid;
+  justify-items: start;
+  gap: calc(var(--space-1) * 0.75);
 }
 
 .reserve__link {
@@ -1177,8 +1185,8 @@ a {
   min-height: 7.5em;
   font-size: calc(var(--font-card-title-size) - 6px);
   font-weight: 500;
-  line-height: 1.12;
-  letter-spacing: var(--letter-tight);
+  line-height: 1.2;
+  letter-spacing: 0;
 }
 
 .mail-card__typed {
@@ -1258,6 +1266,8 @@ a {
     --gap-block: clamp(1.25rem, 3vw, 1.5rem);
     --gap-stack: var(--space-2);
     --gap-tight: var(--space-2);
+    --gap-hero-mobile: var(--space-5);
+    --menu-panel-padding: var(--space-4);
     --font-title-size: clamp(3.25rem, 7vw, 4.75rem);
     --font-card-title-size: clamp(1.75rem, 3.5vw, 2.125rem);
   }
@@ -1281,7 +1291,7 @@ a {
     grid-template-rows: auto auto minmax(18rem, 1fr);
     align-content: start;
     justify-items: center;
-    row-gap: var(--space-6);
+    row-gap: var(--gap-hero-mobile);
     padding-block: calc(var(--header-offset) + var(--size-action) + var(--space-4)) var(--space-4);
     text-align: center;
   }
@@ -1295,7 +1305,7 @@ a {
     column-gap: 0;
     font-size: var(--hero-title-size);
     line-height: 0.84;
-    letter-spacing: -0.06em;
+    letter-spacing: var(--letter-display);
   }
 
   .hero__title-part--start,
@@ -1404,7 +1414,7 @@ a {
   .collection__inner {
     grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 0.78fr);
     align-items: start;
-    gap: var(--space-4);
+    gap: var(--gap-layout);
   }
 
   .collection__media {
@@ -1450,6 +1460,8 @@ a {
     --gap-block: var(--space-3);
     --gap-stack: var(--space-2);
     --gap-tight: var(--space-2);
+    --gap-hero-mobile: var(--space-5);
+    --menu-panel-padding: var(--space-3);
     --font-body-size: 1.0625rem;
     --font-title-size: clamp(3rem, 12vw, 3.625rem);
     --font-card-title-size: 1.75rem;
@@ -1523,7 +1535,7 @@ a {
     grid-template-rows: auto auto minmax(260px, 1fr);
     align-content: start;
     justify-items: center;
-    row-gap: var(--space-6);
+    row-gap: var(--gap-hero-mobile);
     padding-block: calc(var(--header-offset) + var(--size-action) + var(--space-5)) var(--gap-tight);
     text-align: center;
   }
@@ -1542,7 +1554,7 @@ a {
     color: color-mix(in srgb, var(--color-ink) 88%, transparent);
     font-size: clamp(6.75rem, 31vw, 9.75rem);
     line-height: 0.8;
-    letter-spacing: -0.06em;
+    letter-spacing: var(--letter-display);
     white-space: normal;
   }
 
@@ -1604,7 +1616,7 @@ a {
 
   .collection__feature {
     grid-template-columns: 1fr;
-    gap: var(--gap-tight);
+    gap: var(--gap-block);
   }
 
   .floating-cta {
@@ -1660,7 +1672,7 @@ a {
 
 @media (30rem < width <= 48rem) {
   .hero__inner {
-    row-gap: var(--space-6);
+    row-gap: var(--gap-hero-mobile);
     padding-block: calc(var(--header-offset) + var(--size-action) + var(--space-5)) var(--space-5);
   }
 
@@ -1693,7 +1705,7 @@ a {
 
   .craft__title {
     font-size: clamp(3.75rem, 9vw, 4.5rem);
-    line-height: 0.9;
+    line-height: var(--line-height-title);
   }
 
   .craft__text {
@@ -1720,6 +1732,8 @@ a {
     --gap-layout: var(--space-4);
     --gap-block: var(--space-2);
     --gap-stack: var(--space-2);
+    --gap-hero-mobile: var(--space-4);
+    --menu-panel-padding: var(--space-3);
   }
 
   .header__burger-line {
@@ -1779,7 +1793,7 @@ a {
   }
 
   .reserve__inner {
-    gap: var(--gap-block);
+    gap: var(--gap-layout);
   }
 }
 

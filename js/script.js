@@ -83,7 +83,7 @@
       openMenu();
     });
 
-    menu.querySelectorAll('.menu__link').forEach(function(link) {
+    menu.querySelectorAll('a[href]').forEach(function(link) {
       link.addEventListener('click', closeMenu);
     });
 
