@@ -92,6 +92,8 @@
         closeMenu();
       }
     });
+
+    window.addEventListener('hashchange', closeMenu);
   }
 
   function initMailTyping(element) {
