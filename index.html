@@ -7,6 +7,9 @@
   <link rel="icon" href="data:,"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://framerusercontent.com"/>
+  <link rel="preload" as="image" href="img/base.webp" type="image/webp" media="(min-width: 64.001rem)"/>
+  <link rel="preload" as="image" href="img/reveal.webp" type="image/webp" media="(max-width: 64rem)"/>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="css/style.css"/>
 </head>
@@ -32,7 +35,7 @@
     <div class="header__inner content-grid">
       <div class="header__brand">
         <a class="header__logo-link" href="/" aria-label="Home">
-          <img class="header__logo" src="https://framerusercontent.com/images/VMcS7YYTM5PXfXvlHc9u3hSCMM.svg" alt=""/>
+          <img class="header__logo" src="https://framerusercontent.com/images/VMcS7YYTM5PXfXvlHc9u3hSCMM.svg" width="32" height="32" alt="" decoding="async"/>
         </a>
 
         <p class="header__kicker">Optical edition 2026</p>
@@ -98,7 +101,10 @@
     <section class="collection section" id="collection" aria-labelledby="collection-title">
       <div class="collection__inner content-grid">
         <div class="collection__media reveal-on-scroll">
-          <img class="collection__image" src="img/collection-img.png" width="1672" height="941" alt="SOVA sunglasses with sculptural lenses"/>
+          <picture>
+            <source srcset="img/collection-img.webp" type="image/webp"/>
+            <img class="collection__image" src="img/collection-img.png" width="1672" height="941" alt="SOVA sunglasses with sculptural lenses" loading="lazy" decoding="async" fetchpriority="low"/>
+          </picture>
         </div>
 
         <div class="collection__content reveal-on-scroll">
@@ -132,7 +138,10 @@
 
         <div class="craft__cards" aria-label="Frame construction details">
           <article class="craft-card craft-card--active reveal-on-scroll" tabindex="0" role="button" aria-pressed="true" data-craft-card>
-            <img class="craft-card__image" src="img/craft-1.png" width="1672" height="941" alt="Side profile of SOVA sunglasses"/>
+            <picture>
+              <source srcset="img/craft-1.webp" type="image/webp"/>
+              <img class="craft-card__image" src="img/craft-1.png" width="1672" height="941" alt="Side profile of SOVA sunglasses" loading="lazy" decoding="async" fetchpriority="low"/>
+            </picture>
             <div class="craft-card__caption">
               <span class="craft-card__index">01</span>
               <h3 class="craft-card__title">Profile / black line</h3>
@@ -141,7 +150,10 @@
           </article>
 
           <article class="craft-card reveal-on-scroll" tabindex="0" role="button" aria-pressed="false" data-craft-card>
-            <img class="craft-card__image" src="img/craft-2.png" width="1672" height="941" alt="Front view of dark SOVA lens geometry"/>
+            <picture>
+              <source srcset="img/craft-2.webp" type="image/webp"/>
+              <img class="craft-card__image" src="img/craft-2.png" width="1672" height="941" alt="Front view of dark SOVA lens geometry" loading="lazy" decoding="async" fetchpriority="low"/>
+            </picture>
             <div class="craft-card__caption">
               <span class="craft-card__index">02</span>
               <h3 class="craft-card__title">Front / lens geometry</h3>
@@ -150,7 +162,10 @@
           </article>
 
           <article class="craft-card reveal-on-scroll" tabindex="0" role="button" aria-pressed="false" data-craft-card>
-            <img class="craft-card__image" src="img/craft-3.png" width="1672" height="941" alt="Gesture adjusting SOVA sunglasses"/>
+            <picture>
+              <source srcset="img/craft-3.webp" type="image/webp"/>
+              <img class="craft-card__image" src="img/craft-3.png" width="1672" height="941" alt="Gesture adjusting SOVA sunglasses" loading="lazy" decoding="async" fetchpriority="low"/>
+            </picture>
             <div class="craft-card__caption">
               <span class="craft-card__index">03</span>
               <h3 class="craft-card__title">Gesture / held glare</h3>

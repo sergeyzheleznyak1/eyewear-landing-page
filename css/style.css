@@ -287,16 +287,14 @@ a {
     transform: translate3d(0, calc(var(--space-1) * -0.75), 0);
   }
 
-  .craft-card:hover .craft-card__image,
-  .craft-card:focus-visible .craft-card__image {
-    transform: scale(1.025);
-  }
-
   .reserve__inner:has(.reserve__link:hover) .mail-card {
     --mail-card-glow-opacity: 1;
     --mail-card-lift: calc(var(--space-1) * -0.75);
     --mail-card-tilt-x: 2deg;
     --mail-card-tilt-y: -8deg;
+    --mail-control-1: #ff5f57;
+    --mail-control-2: #ffbd2e;
+    --mail-control-3: #28c840;
 
     border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
     box-shadow:
@@ -338,15 +336,14 @@ a {
     transform: translate3d(0, calc(var(--space-1) * -0.35), 0);
   }
 
-  .craft-card:active .craft-card__image {
-    transform: scale(1.015);
-  }
-
   .reserve__inner:has(.reserve__link:active) .mail-card {
     --mail-card-glow-opacity: 1;
     --mail-card-lift: calc(var(--space-1) * -0.5);
     --mail-card-tilt-x: 2deg;
     --mail-card-tilt-y: -8deg;
+    --mail-control-1: #ff5f57;
+    --mail-control-2: #ffbd2e;
+    --mail-control-3: #28c840;
 
     border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
   }
@@ -358,6 +355,9 @@ a {
   --mail-card-lift: calc(var(--space-1) * -0.75);
   --mail-card-tilt-x: 2deg;
   --mail-card-tilt-y: -8deg;
+  --mail-control-1: #ff5f57;
+  --mail-control-2: #ffbd2e;
+  --mail-control-3: #28c840;
 
   border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
   box-shadow:
@@ -610,7 +610,8 @@ a {
 .hero {
   --hero-parallax-content: 0px;
   --hero-parallax-image: 0px;
-  --grid-line: color-mix(in srgb, var(--color-ink) 5%, transparent);
+  --grid-line: color-mix(in srgb, var(--color-ink) 9%, transparent);
+  --hero-grid-vignette-opacity: 1;
   --hero-title-gap: clamp(17rem, 26vw, 32rem);
   --hero-title-size: clamp(8.5rem, 13.5vw, 14.5rem);
   --hero-image-width: min(80vw, 81.25rem);
@@ -620,10 +621,21 @@ a {
   grid-template-areas: "hero";
   min-height: max(40rem, 100dvh);
   overflow: hidden;
+  background: linear-gradient(135deg, #f0f0ed 0%, var(--color-surface) 52%, #d7d7d2 100%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background:
     linear-gradient(var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / 96px 96px,
-    linear-gradient(90deg, var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / 96px 96px,
-    linear-gradient(135deg, #f0f0ed 0%, var(--color-surface) 52%, #d7d7d2 100%);
+    linear-gradient(90deg, var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / 96px 96px;
+  opacity: var(--hero-grid-vignette-opacity);
+  -webkit-mask-image: radial-gradient(circle at center, #000000 0 42%, rgba(0, 0, 0, 0.58) 64%, rgba(0, 0, 0, 0.16) 82%, transparent 100%);
+  mask-image: radial-gradient(circle at center, #000000 0 42%, rgba(0, 0, 0, 0.58) 64%, rgba(0, 0, 0, 0.16) 82%, transparent 100%);
+  pointer-events: none;
 }
 
 .hero__inner {
@@ -687,6 +699,10 @@ a {
 
 .hero__image--base {
   background-image: url("../img/base.png");
+  background-image: image-set(
+    url("../img/base.webp") type("image/webp"),
+    url("../img/base.png") type("image/png")
+  );
 }
 
 .hero__image--reveal {
@@ -696,6 +712,10 @@ a {
 
   z-index: 2;
   background-image: url("../img/reveal.png");
+  background-image: image-set(
+    url("../img/reveal.webp") type("image/webp"),
+    url("../img/reveal.png") type("image/png")
+  );
   -webkit-mask-image: radial-gradient(circle var(--mask-size) at var(--mask-x) var(--mask-y),
       #ffffff 0 40%,
       rgba(255, 255, 255, 0.75) 60%,
@@ -857,6 +877,11 @@ a {
   object-fit: cover;
 }
 
+.collection__media picture {
+  display: block;
+  height: 100%;
+}
+
 .collection__image {
   aspect-ratio: 6 / 5;
   filter: saturate(1.04) contrast(1.02);
@@ -975,7 +1000,6 @@ a {
   background-color: var(--color-panel);
   outline: var(--border-width) solid color-mix(in srgb, var(--color-ink) 8%, transparent);
   outline-offset: calc(var(--border-width) * -1);
-  cursor: pointer;
   transition:
     transform 520ms var(--ease-emphatic),
     outline-color var(--duration-panel) var(--ease-out),
@@ -1098,6 +1122,9 @@ a {
   --mail-card-lift: 0px;
   --mail-card-tilt-x: 0deg;
   --mail-card-tilt-y: 0deg;
+  --mail-control-1: color-mix(in srgb, var(--color-ink) 24%, transparent);
+  --mail-control-2: color-mix(in srgb, var(--color-ink) 24%, transparent);
+  --mail-control-3: color-mix(in srgb, var(--color-ink) 24%, transparent);
 
   position: relative;
   isolation: isolate;
@@ -1152,6 +1179,31 @@ a {
   aspect-ratio: 1;
   border-radius: 50%;
   background-color: color-mix(in srgb, var(--color-ink) 24%, transparent);
+  box-shadow: 0 0 0 color-mix(in srgb, currentColor 0%, transparent);
+  transition:
+    background-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.mail-card__control:nth-child(1) {
+  color: var(--mail-control-1);
+  background-color: var(--mail-control-1);
+}
+
+.mail-card__control:nth-child(2) {
+  color: var(--mail-control-2);
+  background-color: var(--mail-control-2);
+}
+
+.mail-card__control:nth-child(3) {
+  color: var(--mail-control-3);
+  background-color: var(--mail-control-3);
+}
+
+.reserve__inner:has(.reserve__link:hover, .reserve__link:focus-visible, .reserve__link:active) .mail-card__control {
+  transform: scale(1.08);
+  box-shadow: 0 0 14px color-mix(in srgb, currentColor 32%, transparent);
 }
 
 .mail-card__meta {
@@ -1397,6 +1449,10 @@ a {
   .hero__image--base {
     display: block;
     background-image: url("../img/reveal.png");
+    background-image: image-set(
+      url("../img/reveal.webp") type("image/webp"),
+      url("../img/reveal.png") type("image/png")
+    );
   }
 
   .hero__image--reveal {
@@ -1475,6 +1531,10 @@ a {
   .hero__image--base {
     display: block;
     background-image: url("../img/reveal.png");
+    background-image: image-set(
+      url("../img/reveal.webp") type("image/webp"),
+      url("../img/reveal.png") type("image/png")
+    );
   }
 
   .header__inner {
@@ -1507,6 +1567,10 @@ a {
     z-index: 4;
     min-height: 54svh;
     background-image: url("../img/reveal.png");
+    background-image: image-set(
+      url("../img/reveal.webp") type("image/webp"),
+      url("../img/reveal.png") type("image/png")
+    );
     background-position: center bottom;
     background-size: auto min(54svh, 500px);
     opacity: 0;
