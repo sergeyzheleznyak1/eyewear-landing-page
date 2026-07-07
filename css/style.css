@@ -137,6 +137,13 @@ html {
   --size-menu-panel: 440px;
   --size-meta-line: 68px;
 
+  --z-floating: 18;
+  --z-header: 20;
+  --z-burger: 30;
+  --z-menu: 1000;
+  --z-menu-toggle: 1001;
+  --z-preloader: 1100;
+
   --motion-shift-sm: 0.625rem;
   --duration-fast: 180ms;
   --duration-base: 220ms;
@@ -228,7 +235,7 @@ a {
   position: fixed;
   right: max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   bottom: var(--space-3);
-  z-index: 18;
+  z-index: var(--z-floating);
   --button-color: var(--color-inverse);
   --button-bg: var(--color-ink);
   --button-border: var(--color-ink);
@@ -327,19 +334,18 @@ a {
     transform: translate3d(0, calc(var(--space-1) * -0.75), 0);
   }
 
-  .reserve__inner:has(.reserve__link:hover) .mail-card {
+  .reserve__inner:has(.reserve__link:hover) {
     --mail-card-glow-opacity: 1;
     --mail-card-lift: calc(var(--space-1) * -0.75);
     --mail-card-tilt-x: 2deg;
     --mail-card-tilt-y: -8deg;
+    --mail-card-border-strength: 22%;
+    --mail-card-inset-strength: 58%;
+    --mail-card-shadow-strength: 16%;
+    --mail-card-shadow-size: calc(var(--space-7) * 0.72);
     --mail-control-1: #ff5f57;
     --mail-control-2: #ffbd2e;
     --mail-control-3: #28c840;
-
-    border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
-    box-shadow:
-      inset 0 var(--border-width) 0 color-mix(in srgb, #ffffff 58%, transparent),
-      0 var(--space-4) calc(var(--space-7) * 0.72) color-mix(in srgb, var(--color-ink) 16%, transparent);
   }
 
 }
@@ -376,33 +382,31 @@ a {
     transform: translate3d(0, calc(var(--space-1) * -0.35), 0);
   }
 
-  .reserve__inner:has(.reserve__link:active) .mail-card {
+  .reserve__inner:has(.reserve__link:active) {
     --mail-card-glow-opacity: 1;
     --mail-card-lift: calc(var(--space-1) * -0.5);
     --mail-card-tilt-x: 2deg;
     --mail-card-tilt-y: -8deg;
+    --mail-card-border-strength: 22%;
     --mail-control-1: #ff5f57;
     --mail-control-2: #ffbd2e;
     --mail-control-3: #28c840;
-
-    border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
   }
 
 }
 
-.reserve__inner:has(.reserve__link:focus-visible) .mail-card {
+.reserve__inner:has(.reserve__link:focus-visible) {
   --mail-card-glow-opacity: 1;
   --mail-card-lift: calc(var(--space-1) * -0.75);
   --mail-card-tilt-x: 2deg;
   --mail-card-tilt-y: -8deg;
+  --mail-card-border-strength: 22%;
+  --mail-card-inset-strength: 58%;
+  --mail-card-shadow-strength: 16%;
+  --mail-card-shadow-size: calc(var(--space-7) * 0.72);
   --mail-control-1: #ff5f57;
   --mail-control-2: #ffbd2e;
   --mail-control-3: #28c840;
-
-  border-color: color-mix(in srgb, var(--color-ink) 22%, transparent);
-  box-shadow:
-    inset 0 var(--border-width) 0 color-mix(in srgb, #ffffff 58%, transparent),
-    0 var(--space-4) calc(var(--space-7) * 0.72) color-mix(in srgb, var(--color-ink) 16%, transparent);
 }
 
 @media (any-hover: none) and (width <= 48rem) {
@@ -415,7 +419,7 @@ a {
 .preloader {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: var(--z-preloader);
   overflow: hidden;
   pointer-events: none;
   animation: preloader-hide 300ms ease 1.35s forwards;
@@ -459,7 +463,7 @@ a {
   position: fixed;
   inset-block-start: var(--header-offset);
   inset-inline: 0;
-  z-index: 20;
+  z-index: var(--z-header);
 }
 
 .header__inner {
@@ -491,13 +495,15 @@ a {
 }
 
 .header__burger {
+  --burger-open-shift: translate3d(calc(var(--space-4) * -0.75), calc(var(--space-4) * 0.75), 0);
+
   position: fixed;
   inset-block-start: var(--header-offset);
   inset-inline-end: max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   flex-direction: column;
   flex-shrink: 0;
   gap: calc(var(--space-1) * 0.5);
-  z-index: 30;
+  z-index: var(--z-burger);
   touch-action: manipulation;
   transition:
     color var(--duration-fast) ease,
@@ -507,23 +513,23 @@ a {
 }
 
 .header__burger--open {
-  z-index: 1001;
+  z-index: var(--z-menu-toggle);
   gap: 0;
   color: var(--color-inverse);
   background-color: var(--color-ink);
   border-color: var(--color-ink);
-  transform: translate3d(calc(var(--space-4) * -0.75), calc(var(--space-4) * 0.75), 0);
+  transform: var(--burger-open-shift);
 }
 
 .header__burger--open:hover {
   color: var(--color-inverse);
   background-color: var(--color-ink);
   border-color: var(--color-ink);
-  transform: translate3d(calc(var(--space-4) * -0.75), calc(var(--space-4) * 0.75), 0);
+  transform: var(--burger-open-shift);
 }
 
 .header__burger--open:active {
-  transform: translate3d(calc(var(--space-4) * -0.75), calc(var(--space-4) * 0.75), 0) scale(0.96);
+  transform: var(--burger-open-shift) scale(0.96);
 }
 
 .header__burger:focus-visible {
@@ -543,21 +549,26 @@ a {
 }
 
 .header__burger-line {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
   display: block;
   width: 24px;
   height: var(--focus-ring-width);
   border-radius: 999px;
   background-color: currentColor;
+  transform: translate3d(-50%, calc(-50% + var(--burger-line-offset)), 0);
+  transform-origin: center;
   transition:
-    inset var(--duration-fast) var(--ease-out),
     transform var(--duration-fast) var(--ease-out);
 }
 
-.header__burger--open .header__burger-line {
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  transform-origin: center;
+.header__burger-line:first-child {
+  --burger-line-offset: calc(var(--space-1) * -0.5);
+}
+
+.header__burger-line:last-child {
+  --burger-line-offset: calc(var(--space-1) * 0.5);
 }
 
 .header__burger--open .header__burger-line:first-child {
@@ -572,15 +583,17 @@ a {
   position: fixed;
   inset-block-start: 0;
   inset-inline: 0;
-  z-index: 1000;
+  z-index: var(--z-menu);
   color: var(--color-inverse);
   opacity: 0;
+  pointer-events: none;
   transform: translateY(calc(-100% - var(--space-2)));
   transition: transform var(--duration-panel) var(--ease-out), opacity var(--duration-fast) ease;
 }
 
 .menu--open {
   opacity: 1;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
@@ -649,7 +662,9 @@ a {
   --hero-parallax-content: 0px;
   --hero-parallax-image: 0px;
   --grid-line: color-mix(in srgb, var(--color-ink) 9%, transparent);
+  --grid-size: 96px;
   --hero-grid-vignette-opacity: 1;
+  --hero-grid-vignette: radial-gradient(circle at center, #000000 0 42%, rgba(0, 0, 0, 0.58) 64%, rgba(0, 0, 0, 0.16) 82%, transparent 100%);
   --hero-title-gap: clamp(17rem, 26vw, 32rem);
   --hero-title-size: clamp(8.5rem, 13.5vw, 14.5rem);
   --hero-image-width: min(80vw, 81.25rem);
@@ -668,11 +683,11 @@ a {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / 96px 96px,
-    linear-gradient(90deg, var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / 96px 96px;
+    linear-gradient(var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / var(--grid-size) var(--grid-size),
+    linear-gradient(90deg, var(--grid-line) var(--border-width), transparent var(--border-width)) 0 0 / var(--grid-size) var(--grid-size);
   opacity: var(--hero-grid-vignette-opacity);
-  -webkit-mask-image: radial-gradient(circle at center, #000000 0 42%, rgba(0, 0, 0, 0.58) 64%, rgba(0, 0, 0, 0.16) 82%, transparent 100%);
-  mask-image: radial-gradient(circle at center, #000000 0 42%, rgba(0, 0, 0, 0.58) 64%, rgba(0, 0, 0, 0.16) 82%, transparent 100%);
+  -webkit-mask-image: var(--hero-grid-vignette);
+  mask-image: var(--hero-grid-vignette);
   pointer-events: none;
 }
 
@@ -1127,6 +1142,18 @@ a {
 }
 
 .reserve__inner {
+  --mail-card-glow-opacity: 0;
+  --mail-card-lift: 0px;
+  --mail-card-tilt-x: 0deg;
+  --mail-card-tilt-y: 0deg;
+  --mail-card-border-strength: 12%;
+  --mail-card-inset-strength: 45%;
+  --mail-card-shadow-strength: 0%;
+  --mail-card-shadow-size: calc(var(--space-7) * 0.5);
+  --mail-control-1: color-mix(in srgb, var(--color-ink) 24%, transparent);
+  --mail-control-2: color-mix(in srgb, var(--color-ink) 24%, transparent);
+  --mail-control-3: color-mix(in srgb, var(--color-ink) 24%, transparent);
+
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(26rem, 4fr);
   align-items: center;
@@ -1156,26 +1183,18 @@ a {
 }
 
 .mail-card {
-  --mail-card-glow-opacity: 0;
-  --mail-card-lift: 0px;
-  --mail-card-tilt-x: 0deg;
-  --mail-card-tilt-y: 0deg;
-  --mail-control-1: color-mix(in srgb, var(--color-ink) 24%, transparent);
-  --mail-control-2: color-mix(in srgb, var(--color-ink) 24%, transparent);
-  --mail-control-3: color-mix(in srgb, var(--color-ink) 24%, transparent);
-
   position: relative;
   isolation: isolate;
   gap: var(--space-4);
   padding: var(--space-4);
-  border: var(--border-width) solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+  border: var(--border-width) solid color-mix(in srgb, var(--color-ink) var(--mail-card-border-strength), transparent);
   border-radius: var(--radius-panel);
   background:
     linear-gradient(135deg, color-mix(in srgb, var(--color-surface-soft) 70%, transparent), transparent),
     var(--color-panel);
   box-shadow:
-    inset 0 var(--border-width) 0 color-mix(in srgb, #ffffff 45%, transparent),
-    0 var(--space-3) calc(var(--space-7) * 0.5) color-mix(in srgb, var(--color-ink) 0%, transparent);
+    inset 0 var(--border-width) 0 color-mix(in srgb, #ffffff var(--mail-card-inset-strength), transparent),
+    0 var(--space-4) var(--mail-card-shadow-size) color-mix(in srgb, var(--color-ink) var(--mail-card-shadow-strength), transparent);
   overflow: hidden;
   transform:
     perspective(1200px)
