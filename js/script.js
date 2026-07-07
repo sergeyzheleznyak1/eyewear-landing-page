@@ -24,7 +24,7 @@ const canUseReveal = window.matchMedia('(hover: hover) and (pointer: fine)').mat
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 initMenu(menuToggle, menu);
-initWordReveal(heroLead, 'hero__word', 2.42);
+initWordReveal(heroLead, 'hero__word', 0.96);
 initMailTyping(mailTyped, reduceMotion);
 initScrollParallax(hero, collectionMedia, reduceMotion);
 initCraftCards(craftCards);
