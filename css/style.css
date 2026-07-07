@@ -31,6 +31,46 @@ img {
   height: auto;
 }
 
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/InstrumentSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("../fonts/BodoniModa_28pt-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 button {
   border: 0;
   font: inherit;
@@ -49,8 +89,8 @@ html {
   --page-gutter: clamp(1rem, 2.5vw, 2.5rem);
   --header-offset: clamp(1.125rem, 2vw, 1.75rem);
 
-  --font-family-base: "Helvetica Neue", "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-accent: 'Bodoni Moda', Georgia, "Times New Roman", serif;
+  --font-family-base: "Instrument Sans", sans-serif;
+  --font-family-accent: "Bodoni Moda", serif;
 
   --color-ink: #111111;
   --color-muted: #63635f;
@@ -543,7 +583,7 @@ a {
 }
 
 .header:has(.header__burger--open) {
-  z-index: 30;
+  z-index: auto;
 }
 
 .menu__inner {
@@ -1053,7 +1093,7 @@ a {
 .craft-card__title {
   font-family: var(--font-family-base);
   font-size: clamp(10px, 0.78vw, 12px);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: var(--letter-label);
   line-height: 1.22;
   text-transform: uppercase;
