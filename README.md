@@ -1,69 +1,16 @@
 # SOVA Eyewear
 
-Одностраничный промо-сайт для коллекции очков SOVA. Проект собран на чистых HTML, CSS и JavaScript без сборщика и дополнительных npm-зависимостей.
+A one-page editorial landing page for the SOVA optical collection. The project is built with plain HTML, CSS, and modular JavaScript, with the experience focused on product presence, restrained motion, and accessible interaction.
 
-## Что внутри
+## Highlights
 
-- Анимированный preloader при входе на страницу.
-- Hero-секция с крупной типографикой, изображением продукта и pointer-reveal эффектом.
-- Выдвижное меню с якорной навигацией.
-- Блок коллекции с описанием материалов и особенностей.
-- Craft-секция с интерактивным переключением деталей оправы.
-- Reserve-секция с mailto-ссылкой и имитацией набора письма.
-- Поддержка `prefers-reduced-motion` для пользователей с ограничением анимаций.
+- Large typographic hero with layered product imagery and a pointer-driven reveal effect on desktop.
+- Motion system built around a short preloader, word reveal, scroll reveals, subtle parallax, and a typed email preview.
+- Interactive craft cards that respond to hover, focus, click, Enter, and Space.
+- Floating booking CTA that appears only while the collection and craft sections are in view.
+- Accessibility details include semantic sections, ARIA states for the menu and card controls, keyboard support, and `prefers-reduced-motion` handling.
+- Responsive image delivery with WebP sources and lazy loading for below-the-fold visuals.
 
-## Структура проекта
+## Notes
 
-```text
-.
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   └── script.js
-└── img/
-    ├── base.png
-    ├── base-img.png
-    ├── collection-img.png
-    ├── craft-1.png
-    ├── craft-2.png
-    ├── craft-3.png
-    ├── reveal.png
-    └── reveal-img.png
-```
-
-## Запуск
-
-Проект можно открыть напрямую в браузере:
-
-```bash
-open index.html
-```
-
-Или запустить локальный сервер из корня проекта:
-
-```bash
-python3 -m http.server 8000
-```
-
-После этого страница будет доступна по адресу:
-
-```text
-http://localhost:8000
-```
-
-## Зависимости
-
-В проекте нет локальных пакетных зависимостей. Страница подключает шрифт `Bodoni Moda` через Google Fonts, поэтому для полного соответствия дизайну нужен доступ к интернету.
-
-## Основные файлы
-
-- `index.html` — разметка страницы и контент секций.
-- `css/style.css` — визуальная система, адаптивность и CSS-анимации.
-- `js/script.js` — меню, scroll reveal, parallax, typing effect и интерактивные состояния craft-блока.
-
-## Настройка контента
-
-- Email для записи меняется в ссылках `mailto:` внутри `index.html`.
-- Тексты секций редактируются в `index.html`.
-- Изображения можно заменить в папке `img/`, сохранив имена файлов или обновив пути в разметке и CSS.
+The JavaScript is split into small modules by behavior, while `js/script.js` remains the entry point. There is no build step or framework layer; the landing page stays lightweight and easy to inspect.
