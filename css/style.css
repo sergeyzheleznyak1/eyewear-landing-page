@@ -1330,12 +1330,18 @@ a {
   opacity: 0;
   transform:
     perspective(1200px)
-    translate3d(0, calc(var(--reveal-y) + var(--parallax-y) + var(--mail-card-lift, 0px)), 0)
-    rotateX(var(--mail-card-tilt-x, 0deg))
-    rotateY(var(--mail-card-tilt-y, 0deg));
+    translate3d(0, calc(var(--reveal-y) + var(--parallax-y)), 0);
   transition:
     opacity var(--duration-reveal) var(--ease-emphatic),
     transform var(--duration-reveal) var(--ease-emphatic);
+}
+
+.page--motion .mail-card.reveal-on-scroll {
+  transform:
+    perspective(1200px)
+    translate3d(0, calc(var(--reveal-y) + var(--parallax-y) + var(--mail-card-lift)), 0)
+    rotateX(var(--mail-card-tilt-x))
+    rotateY(var(--mail-card-tilt-y));
 }
 
 .page--motion .reveal-on-scroll.is-visible {
