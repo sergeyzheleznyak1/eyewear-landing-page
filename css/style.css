@@ -607,7 +607,8 @@ a {
   margin-top: var(--header-offset);
   margin-right: max(var(--page-gutter), calc((100% - var(--content-max-width)) / 2));
   margin-left: auto;
-  padding: var(--menu-panel-padding);
+  padding-block: var(--space-6);
+  padding-inline: var(--space-3);
   border: var(--border-width) solid color-mix(in srgb, var(--color-inverse) 14%, transparent);
   border-radius: var(--radius-panel);
   background-color: var(--color-ink);
@@ -621,7 +622,7 @@ a {
 }
 
 .menu__list {
-  gap: var(--space-1);
+  gap: var(--space-3);
 }
 
 .menu__contacts {
