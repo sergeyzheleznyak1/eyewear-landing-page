@@ -11,6 +11,7 @@ export function initHeroReveal(hero, revealImage, canUseReveal, reduceMotion) {
     }
 
     animationFrame = requestAnimationFrame(function() {
+      revealImage.classList.add('hero__image--reveal-active');
       revealImage.style.setProperty('--mask-x', event.clientX + 'px');
       revealImage.style.setProperty('--mask-y', event.clientY + 'px');
       animationFrame = 0;

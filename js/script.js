@@ -21,12 +21,13 @@ const floatingCta = document.querySelector('.floating-cta');
 const craftCards = document.querySelectorAll('[data-craft-card]');
 const animatedElements = document.querySelectorAll('.reveal-on-scroll');
 const canUseReveal = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+const canUseParallax = window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 64.001rem)').matches;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 initMenu(menuToggle, menu);
-initWordReveal(heroLead, 'hero__word', 0.96);
+initWordReveal(heroLead, 'hero__word', 0.46);
 initMailTyping(mailTyped, reduceMotion);
-initScrollParallax(hero, collectionMedia, reduceMotion);
+initScrollParallax(hero, collectionMedia, reduceMotion || !canUseParallax);
 initCraftCards(craftCards);
 initFloatingCta(floatingCta, collectionSection, craftSection, reserveSection);
 initScrollReveal(animatedElements, reduceMotion);
